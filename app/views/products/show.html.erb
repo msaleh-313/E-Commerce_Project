@@ -1,0 +1,94 @@
+<h1>Product show page</h1>
+<div class="flex justify-center gap-20 py-10">
+  <div class="flex flex-wrap max-w-lg">
+    <% @product.images.each do |image| %>
+      <%= image_tag image, class: "w-auto h-64" %>
+    <% end %>
+  </div>
+              
+  <div data-controller="products" data-products-product-value="<%= @product.to_json %>" class="flex flex-col items-start max-w-sm">
+    <h1 class="font-bold text-4xl uppercase"><%= @product.name %></h1>
+    <p class="text-2xl mt-4">$<%= (@product.price/100.0).to_s %>
+    <p class="text-md py-8"><%= @product.description %></p>
+    <div class="my-8">
+      <p class='uppercase text-lg'>Size</p>
+      <% @product.stocks.each do |stock| %>
+        <% if stock.amount > 0 %>
+          <button data-action="click->products#selectSize" value="<%= stock.size %>" class="bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-300 focus:outline-none focu:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+            <%= stock.size %>
+          </button>
+        <% else %> 
+          <button disabled value="<%= stock.size %>" class="disabled:bg-gray-400 bg-gray-200 text-gray-800 font-semibold py-2 px-4 rounded hover:bg-gray-300 focu s:outline-none focu:ring-2 focus:ring-gray-500 focus:ring-opacity-50">
+            <%= stock.size %>
+          </button>
+        <% end %>
+      <% end %>
+    </div>
+    <div id="selected-size"></div>
+    <button data-action="click->products#addToCart" class="inline-flex items-center justify-center px-5 py-3 border border-transparent font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500">Add To Cart</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+<%# The line data-controller="products" data-products-product-value is part of an HTML element that is using Stimulus to enhance its functionality with JavaScript. Stimulus is a modest JavaScript framework for adding behavior to HTML. It uses a "controller" pattern to connect JavaScript objects to HTML elements.
+
+Here’s a breakdown of what each part of the line means:
+
+data-controller="products":
+
+This attribute connects the HTML element to a Stimulus controller named products.
+The products controller is responsible for managing the behavior and state of elements within its scope.
+data-products-product-value:
+
+This is a custom data attribute used by Stimulus to store a value that can be accessed by the products controller.
+The attribute follows the format data-[controller]-[variable]-value, where controller is the name of the Stimulus controller (products), and variable is the name of the variable (product).
+This allows you to pass specific data to the controller, which can be used to control the behavior of the element.
+Example Usage
+Here's an example of how these attributes might be used in a Stimulus controller:
+
+HTML:
+
+html
+Copy code
+<div data-controller="products" data-products-product-value="123">
+  <!-- Content here -->
+</div>
+JavaScript (Stimulus Controller):
+
+javascript
+Copy code
+// products_controller.js
+import { Controller } from "stimulus";
+
+export default class extends Controller {
+  static values = { product: Number }
+
+  connect() {
+    console.log(`Product ID: ${this.productValue}`);
+    // Additional logic for handling the product element
+  }
+}
+In this example:
+
+The data-controller="products" attribute binds the div element to the products controller.
+The data-products-product-value="123" attribute passes the value 123 to the controller as productValue.
+Inside the products controller, the productValue is logged to the console when the controller connects.
+Practical Application
+For your project, you might use Stimulus to handle dynamic interactions on the client side, such as updating the UI in response to user actions without requiring full page reloads. This approach allows you to add interactivity to your application in a structured and maintainable way.
+
+
+
+
+
+ %>
+
+

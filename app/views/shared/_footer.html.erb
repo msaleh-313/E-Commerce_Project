@@ -1,0 +1,54 @@
+<footer class="bg-gray-800 text-white">
+  <div class="max-w-6xl mx-auto px-4 py-10 md:py-20">
+    <div class="xl:grid xl:grid-cols-3 xl:gap-8">
+      <!-- About section -->
+      <div class="space-y-8 xl:col-span-1">
+        <h3 class="text-sm font-semibold text-gray-200 tracking-wider uppercase">About Ecomm</h3>
+        <p class="text-white leading-6">
+          Ecomm is a leading online marketplace, offering a wide range of products to cater to all your needs. Our commitment to quality and customer service ensures a great shopping experience.
+        </p>
+      </div>
+
+      <!-- Links and Contact Information -->
+      <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+        <div>
+          <h3 class="text-sm font-semibold text-gray-200 tracking-wider uppercase">Quick Links</h3>
+          <ul class="mt-4 space-y-4">
+            <li>
+              <%= link_to "Home", root_path, class: "text-base leading-6 text-white hover:text-gray-100" %>
+            </li>
+            <!-- Add more links as needed -->
+          </ul>
+        </div>
+        <div>
+          <h3 class="text-sm font-semibold text-gray-200 tracking-wider uppercase">Contact</h3>
+          <ul class="mt-4 space-y-4">
+            <li>
+              <p class="text-base leading-6 text-white">
+                123 near Chaman Ice-Cream<br>
+                Hall Road. Lahore
+              </p>
+            </li>
+            <li>
+              <p class="text-base leading-6 text-white">
+                Email: msalehbutt313@gmail.com
+              </p>
+            </li>
+            <li>
+              <p class="text-base leading-6 text-white">
+                Phone: (+92)300-4251276
+              </p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="border-t border-gray-700 mt-10 pt-6">
+      <div class="max-w-6xl mx-auto px-4 pt-10 flex items-center justify-between">
+        <p class="text-base leading-6 text-gray-400">
+          &copy; <%= Time.now.year %> Ecomm, Inc. All rights reserved.
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
