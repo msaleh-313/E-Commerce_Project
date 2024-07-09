@@ -73,3 +73,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "stripe", "~> 12.0"
+
+gem "pagy"
